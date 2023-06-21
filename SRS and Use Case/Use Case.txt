@@ -1,0 +1,37 @@
+Use Case: Collaborate on a Note
+
+Primary Actor: User
+
+Preconditions:
+- The user has a registered account and is logged into the note-taking app.
+- The user has created at least one note.
+- The user has identified another user to collaborate with.
+
+Postconditions:
+- The note is successfully shared and collaboration is enabled between the users.
+
+Main Flow:
+1. The user selects a note they want to collaborate on from their list of notes.
+2. The user chooses the option to collaborate on the selected note.
+3. The app presents the user with options to invite collaborators.
+4. The user enters the email address or username of the collaborator they want to invite.
+5. The app validates the collaborator's email address or username and confirms their availability for collaboration.
+6. The user sends an invitation to the collaborator.
+7. The collaborator receives an invitation notification via email or app notification.
+8. The collaborator accepts the invitation and opens the note.
+9. Both the user and collaborator can now view and edit the note simultaneously.
+10. Changes made by either the user or collaborator are automatically synchronized and updated for both parties.
+11. The app tracks and displays the respective authors of changes made in the note.
+12. The user and collaborator can continue to collaborate on the note, making edits and additions as needed.
+13. When finished, either the user or collaborator can choose to save the changes and close the collaboration session.
+14. The note is saved with the changes made during collaboration and remains accessible to both the user and collaborator.
+15. Collaboration on the note can be resumed at any time by either the user or collaborator.
+
+Alternative Flows:
+- If the collaborator declines the invitation (Step 8), the user receives a notification and can choose to invite another collaborator or continue working on the note individually.
+- If the user or collaborator encounters any technical issues or connectivity problems during collaboration, the app should provide appropriate error messages and options to retry or troubleshoot the issue.
+
+Extensions:
+- The app may provide additional collaboration features such as commenting, mentioning collaborators, or setting permissions for specific collaborators.
+
+Note: This use case focuses on the collaboration aspect of the note-taking app. There may be other use cases related to note creation, editing, organization, and individual usage scenarios that can be developed in detail.
