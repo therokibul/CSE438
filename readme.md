@@ -2,6 +2,9 @@
 # Unote
 Introduction
 
+------------
+
+
 This repository contains the source code for a cloud-based note-taking application that allows users to create, manage, and collaborate on notes in real-time. The application is designed to be accessible via web browsers and mobile devices (iOS and Android).
 Features
 
@@ -15,4 +18,24 @@ Technologies Used
     Front-end: Flutter
     Back-end: Firebse
     Database: Cloud Firestore
-    
+**Contributing**
+
+------------
+
+
+Contributions to this project are welcome. To contribute, please follow these steps:
+
+    Fork the repository.
+    Create a new branch for your feature or bug fix.
+    Make your changes and commit them with descriptive commit messages.
+    Push your changes to your forked repository.
+    Submit a pull request, explaining your changes in detail and any considerations for reviewing.
+
+**Contact**
+
+------------
+
+
+If you have any questions or suggestions, please feel free to reach out to the project maintainer at therokibul@gmail.com
+
+Enjoy using the cloud-based note-taking app!
