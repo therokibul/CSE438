@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../constants/const.dart';
 
 class UserIcon extends StatelessWidget {
-  UserIcon({super.key, required this.color, required this.onTap});
+  const UserIcon({super.key, required this.color, required this.onTap});
   final Color color;
-  
+
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class UserIcon extends StatelessWidget {
       ),
       child: IconButton(
         onPressed: () {},
-        icon: const Icon(
+        icon: Icon(
           Icons.person,
-          color: primaryColor,
+          color: color,
         ),
       ),
     );
