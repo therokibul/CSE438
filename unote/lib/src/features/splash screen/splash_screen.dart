@@ -10,8 +10,11 @@ class SplashScreen extends StatelessWidget {
       body: Center(
         child: Text(
           'UNote',
-          
-          style: TextStyle(color: primaryColor,),
+          style: TextStyle(
+            color: primaryColor,
+            fontFamily: 'JejuHallasan',
+            fontSize: 80,
+          ),
         ),
       ),
     );
