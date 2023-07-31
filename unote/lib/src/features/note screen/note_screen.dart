@@ -33,13 +33,30 @@ class NoteScreen extends StatelessWidget {
                     return Container(
                       padding: const EdgeInsets.all(10),
                       width: double.infinity,
-                      child: const Column(
+                      child: Column(
                         children: [
-                          Text(
+                          const Text(
                             'Collaborate with',
                             textScaleFactor: 2,
                           ),
-                          TextField(),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 30),
+                            child: TextField(
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: InputDecoration(
+                                labelText: 'E-mail',
+                                prefixIcon: Icon(Icons.email),
+                              ),
+                            ),
+                          ),
+                          MaterialButton(
+                            onPressed: () {},
+                            color: primaryColor,
+                            child: const Text(
+                              'Save',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
                         ],
                       ),
                     );

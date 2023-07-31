@@ -30,13 +30,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
         useMaterial3: true,
-        inputDecorationTheme: const InputDecorationTheme(
-          border: OutlineInputBorder(),
-          prefixIconColor: Colors.grey,
-          floatingLabelStyle: TextStyle(color: Colors.grey),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 2, color: Colors.grey),
-          ),
+        inputDecorationTheme: InputDecorationTheme(
+          border: const OutlineInputBorder(borderSide: BorderSide.none),
+          prefixIconColor: primaryColor,
+          filled: true,
+          fillColor: const Color(0xffd9d9d9).withOpacity(0.31),
+          
         ),
       ),
       home: const AuthScreen(),
