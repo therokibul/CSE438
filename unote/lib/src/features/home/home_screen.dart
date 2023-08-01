@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:unote/src/features/new%20note/new_note.dart';
 import 'package:unote/src/features/note%20screen/note_screen.dart';
 
 import '../../common_widgets/user_icon.dart';
@@ -51,6 +52,13 @@ class HomeScreen extends StatelessWidget {
           noteContainer(() {}),
           noteContainer(() {}),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const NewNote()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
