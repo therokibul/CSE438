@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:unote/src/features/new%20note/new_note.dart';
 import 'package:unote/src/features/note%20screen/note_screen.dart';
 
@@ -34,14 +35,9 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         mainAxisSpacing: 10,
         children: [
-          noteContainer(
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const NoteScreen()),
-              );
-            },
-          ),
+          noteContainer(() {
+            Get.to(const NoteScreen());
+          }),
           noteContainer(() {}),
           noteContainer(() {}),
           noteContainer(() {}),
@@ -55,8 +51,7 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const NewNote()));
+          Get.to(const NewNote());
         },
         child: const Icon(Icons.add),
       ),
@@ -67,8 +62,8 @@ class HomeScreen extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 200,
-        width: 200,
+        // height: 200,
+        // width: 200,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.grey.shade100,
