@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^4.8.4
   get: ^4.6.5
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -47,3 +48,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
 
+
+   
