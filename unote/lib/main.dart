@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:unote/src/constants/const.dart';
-import 'package:unote/src/features/authentication/auth_screen.dart';
+import 'package:unote/src/features/authentication/auth_check.dart';
 
 import 'firebase_options.dart';
 
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           
         ),
       ),
-      home: const AuthScreen(),
+      home: const AuthCheck(),
       // home: const SplashScreen(),
     );
   }

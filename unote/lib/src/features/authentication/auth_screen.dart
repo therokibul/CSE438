@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:unote/src/constants/const.dart';
-import 'package:unote/src/features/home/home_screen.dart';
+import 'package:unote/src/features/authentication/auth_service.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +29,8 @@ class AuthScreen extends StatelessWidget {
               height: 50,
             ),
             InkWell(
-              onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+              onTap: () async {
+                await Authentication.signInWithGoogle(context: context);
               },
               child: Container(
                 width: double.infinity,
@@ -49,7 +51,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                     const Text(
                       'Login With Google',
-                      textScaleFactor: 2.1,
+                      textScaleFactor: 1.7,
                       style: TextStyle(color: primaryColor),
                     )
                   ],
