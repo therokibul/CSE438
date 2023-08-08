@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:unote/screens/new%20note/new_note.dart';
+import 'package:intl/intl.dart';
+import 'package:unote/controller/note_controller.dart';
+import 'package:unote/screens/add%20Note/add_note.dart';
 import 'package:unote/screens/profile/profile.dart';
 
 import '../widgets/user_icon.dart';
 import '../../utils/const.dart';
-import '../note screen/note_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+  HomeScreen({super.key});
+  NoteController noteController = Get.put(NoteController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,89 +28,55 @@ class HomeScreen extends StatelessWidget {
           UserIcon(
             color: primaryColor,
             onTap: () {
-              Get.to( ProfileScreen());
+              Get.to(ProfileScreen());
             },
           )
         ],
       ),
-      body: MasonryGridView.count(
-        crossAxisCount: 2,
-        mainAxisSpacing: 4,
-        crossAxisSpacing: 4,
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: noteController.axisCount.value,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+        ),
+        itemCount: noteController.notes.length,
         itemBuilder: (context, index) {
-          return noteContainer(() {
-            Get.to(const NoteScreen());
-          });
+          var formattedDate = DateFormat.yMMMd()
+              .format(noteController.notes[index].creationDate.toDate());
+
+          return Card(
+            child: ListTile(
+              title: RichText(
+                maxLines: 4,
+                text: TextSpan(
+                  text: '${noteController.notes[index].title} \n',
+                  style: const TextStyle(
+                    color: primaryColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '${noteController.notes[index].body} ',
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              subtitle: Text('$formattedDate \n'),
+            ),
+          );
         },
       ),
-      // body: GridView.count(
-      //   crossAxisCount: 2,
-      //   crossAxisSpacing: 10,
-      //   padding: const EdgeInsets.all(10),
-      //   mainAxisSpacing: 10,
-      //   children: [
-      //     noteContainer(() {
-      //       Get.to(const NoteScreen());
-      //     }),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //     noteContainer(() {}),
-      //   ],
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Get.to(const NewNote());
+          Get.to(NewNote());
         },
         child: const Icon(Icons.add),
-      ),
-    );
-  }
-
-  InkWell noteContainer(VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        // height: 200,
-        // width: 200,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.grey.shade100,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(16),
-          ),
-        ),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Reading Notes',
-              style: TextStyle(
-                color: primaryColor,
-                fontSize: 20,
-              ),
-            ),
-            Text(
-              '01.08.2023',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-              ),
-            ),
-            Text(
-              'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ',
-              style: TextStyle(
-                color: Colors.grey,
-                // fontSize: 20,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

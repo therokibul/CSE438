@@ -9,7 +9,7 @@ class Database {
   final String noteCollection = 'notes';
   Future<void> addNote(String uid, String title, String body) async {
     try {
-      var uuid = Uuid().v4();
+      var uuid = const Uuid().v4();
       await _firestore
           .collection(userCollection)
           .doc(uid)
@@ -64,9 +64,9 @@ class Database {
         .snapshots()
         .map((QuerySnapshot query) {
       List<NoteModel> retVal = [];
-      query.docs.forEach((element) {
+      for (var element in query.docs) {
         retVal.add(NoteModel.fromDocumentSnapshot(element));
-      });
+      }
       return retVal;
     });
   }
