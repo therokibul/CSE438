@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:unote/src/features/new%20note/new_note.dart';
-import 'package:unote/src/features/profile/profile.dart';
+import 'package:unote/screens/new%20note/new_note.dart';
+import 'package:unote/screens/profile/profile.dart';
 
-import '../../common_widgets/user_icon.dart';
-import '../../constants/const.dart';
+import '../widgets/user_icon.dart';
+import '../../utils/const.dart';
 import '../note screen/note_screen.dart';
 
 class HomeScreen extends StatelessWidget {

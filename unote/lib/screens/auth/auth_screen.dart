@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unote/src/constants/const.dart';
-import 'package:unote/src/features/authentication/auth_service.dart';
+import 'package:unote/utils/const.dart';
+import 'package:unote/controller/auth_controller.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});

@@ -39,6 +39,7 @@ class Authentication {
         Get.snackbar(
             'Error', 'Error occurred using Google Sign-In. Try again.');
       }
+      
     }
 
     return user;

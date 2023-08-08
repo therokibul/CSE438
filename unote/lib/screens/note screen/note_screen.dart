@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unote/src/common_widgets/user_icon.dart';
-import 'package:unote/src/constants/const.dart';
+import 'package:unote/screens/widgets/user_icon.dart';
+import 'package:unote/utils/const.dart';
 
 class NoteScreen extends StatelessWidget {
   const NoteScreen({super.key});

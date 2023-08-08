@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:unote/src/constants/const.dart';
+import 'package:unote/utils/const.dart';
 
 class NewNote extends StatelessWidget {
   const NewNote({super.key});
