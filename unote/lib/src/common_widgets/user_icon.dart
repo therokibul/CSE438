@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class UserIcon extends StatelessWidget {
   const UserIcon({super.key, required this.color, required this.onTap});
   final Color color;
@@ -17,7 +15,7 @@ class UserIcon extends StatelessWidget {
         color: Colors.grey.shade300,
       ),
       child: IconButton(
-        onPressed: () {},
+        onPressed: onTap,
         icon: Icon(
           Icons.person,
           color: color,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:unote/src/features/new%20note/new_note.dart';
-import 'package:unote/src/features/note%20screen/note_screen.dart';
+import 'package:unote/src/features/profile/profile.dart';
 
 import '../../common_widgets/user_icon.dart';
 import '../../constants/const.dart';
+import '../note screen/note_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,30 +27,42 @@ class HomeScreen extends StatelessWidget {
         actions: [
           UserIcon(
             color: primaryColor,
-            onTap: () {},
+            onTap: () {
+              Get.to( ProfileScreen());
+            },
           )
         ],
       ),
-      body: GridView.count(
+      body: MasonryGridView.count(
         crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        padding: const EdgeInsets.all(10),
-        mainAxisSpacing: 10,
-        children: [
-          noteContainer(() {
+        mainAxisSpacing: 4,
+        crossAxisSpacing: 4,
+        itemBuilder: (context, index) {
+          return noteContainer(() {
             Get.to(const NoteScreen());
-          }),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-          noteContainer(() {}),
-        ],
+          });
+        },
       ),
+      // body: GridView.count(
+      //   crossAxisCount: 2,
+      //   crossAxisSpacing: 10,
+      //   padding: const EdgeInsets.all(10),
+      //   mainAxisSpacing: 10,
+      //   children: [
+      //     noteContainer(() {
+      //       Get.to(const NoteScreen());
+      //     }),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //     noteContainer(() {}),
+      //   ],
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.to(const NewNote());
