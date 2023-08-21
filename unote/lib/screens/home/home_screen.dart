@@ -39,11 +39,22 @@ class HomeScreen extends StatelessWidget {
         stream: _stream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(
+                child: Text(
+              'Something went wrong',
+              textScaleFactor: 2,
+              style: TextStyle(
+                color: Colors.red,
+              ),
+            ));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading");
+            return const Center(
+              child: CircularProgressIndicator(
+                color: primaryColor,
+              ),
+            );
           }
 
           return Padding(
@@ -73,9 +84,9 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: '${data['body']} ',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
-                              color: Colors.black.withOpacity(0.7),
+                              color: Color(0xff585555),
                               fontStyle: FontStyle.italic,
                             ),
                           ),
@@ -93,8 +104,10 @@ class HomeScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                NoteScreen(noteId: data['id'],data: data,)),
+                            builder: (context) => NoteScreen(
+                                  noteId: data['id'],
+                                  data: data,
+                                )),
                       );
                     },
                   ),

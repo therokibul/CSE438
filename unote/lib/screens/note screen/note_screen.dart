@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:unote/screens/home/home_screen.dart';
 import 'package:unote/screens/widgets/user_icon.dart';
 import 'package:unote/utils/const.dart';
 
@@ -20,7 +22,56 @@ class NoteScreen extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Are You Sure?',
+                            textScaleFactor: 2,
+                          ),
+                          const SizedBox(
+                            height: 50,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              MaterialButton(
+                                onPressed: () {},
+                                color: primaryColor,
+                                child: const Text(
+                                  'Cancel',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                              MaterialButton(
+                                onPressed: () async {
+                                  await firestore
+                                      .collection('users')
+                                      .doc(uid)
+                                      .collection('notes')
+                                      .doc(data['id'])
+                                      .delete();
+                                  Get.to(() => HomeScreen());
+                                },
+                                color: primaryColor,
+                                child: const Text(
+                                  'Delete',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                  });
+            },
             icon: const Icon(
               Icons.delete,
               color: primaryColor,

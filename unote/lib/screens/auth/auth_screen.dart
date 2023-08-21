@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:unote/utils/const.dart';
 import 'package:unote/controller/auth_controller.dart';
 
@@ -35,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Container(
                 width: double.infinity,
                 // height: 45,
-                margin: const EdgeInsets.all(40),
+                margin: EdgeInsets.all(Get.width * 0.04),
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(16)),
@@ -46,13 +47,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: Row(
                   children: [
                     Image.asset('assets/images/google.png'),
-                    const SizedBox(
-                      width: 25,
+                    SizedBox(
+                      width: Get.width * 0.05,
                     ),
-                    const Text(
+                    Text(
                       'Login With Google',
-                      textScaleFactor: 1.7,
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(
+                          color: primaryColor, fontSize: Get.width * 0.08),
                     )
                   ],
                 ),
