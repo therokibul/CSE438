@@ -90,7 +90,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      Get.to(const NoteScreen());
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                NoteScreen(noteId: data['id'],data: data,)),
+                      );
                     },
                   ),
                 );
