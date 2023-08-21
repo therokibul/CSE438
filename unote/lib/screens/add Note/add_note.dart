@@ -1,8 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:unote/services/database.dart';
+
 import 'package:unote/utils/const.dart';
+import 'package:uuid/uuid.dart';
 
 class NewNote extends StatelessWidget {
   NewNote({super.key});
@@ -44,12 +46,26 @@ class NewNote extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
+        onPressed: () async {
           if (titleController.text.isEmpty && bodyController.text.isEmpty) {
             showEmptyTitleDialog(context);
           } else {
-            Database().addNote(auth.currentUser!.uid, titleController.text,
-                bodyController.text);
+            try {
+              final String uuid = const Uuid().v4();
+              await firestore
+                  .collection('users')
+                  .doc(uid)
+                  .collection('notes')
+                  .doc(uuid)
+                  .set({
+                'id': uuid,
+                'title': titleController.text,
+                'body': bodyController.text,
+                'dateTime': Timestamp.now(),
+              });
+            } catch (e) {
+              print(e.toString());
+            }
             Get.back();
           }
         },
