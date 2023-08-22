@@ -1,25 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:unote/screens/home/home_screen.dart';
 import 'package:unote/utils/const.dart';
-import 'package:uuid/uuid.dart';
 
-class NewNote extends StatefulWidget {
-  const NewNote({super.key});
+class EditScreen extends StatefulWidget {
+  const EditScreen({super.key, required this.data});
+  final Map<String, dynamic> data;
 
   @override
-  State<NewNote> createState() => _NewNoteState();
+  State<EditScreen> createState() => _EditScreenState();
 }
 
-class _NewNoteState extends State<NewNote> {
-  final TextEditingController titleController = TextEditingController();
-  final TextEditingController bodyController = TextEditingController();
+class _EditScreenState extends State<EditScreen> {
   bool isloading = false;
-
   @override
   Widget build(BuildContext context) {
+    TextEditingController titleController =
+        TextEditingController(text: widget.data['title']);
+    TextEditingController bodyController =
+        TextEditingController(text: widget.data['body']);
     if (isloading) {
       return const Center(
         child: CircularProgressIndicator(
@@ -30,6 +30,7 @@ class _NewNoteState extends State<NewNote> {
       return Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColor.withOpacity(0.1),
+          title: const Text('Update Note'),
           centerTitle: true,
         ),
         body: Padding(
@@ -71,14 +72,12 @@ class _NewNoteState extends State<NewNote> {
               });
             } else {
               try {
-                final String uuid = const Uuid().v4();
                 await firestore
                     .collection('users')
                     .doc(uid)
                     .collection('notes')
-                    .doc(uuid)
-                    .set({
-                  'id': uuid,
+                    .doc(widget.data['id'])
+                    .update({
                   'title': titleController.text,
                   'body': bodyController.text,
                   'dateTime': Timestamp.now(),
@@ -86,7 +85,7 @@ class _NewNoteState extends State<NewNote> {
               } catch (e) {
                 print(e.toString());
               }
-              Get.back();
+              Get.to(HomeScreen());
               setState(() {
                 isloading = false;
               });

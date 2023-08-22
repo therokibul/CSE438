@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:unote/screens/edit%20screen/edit_screen.dart';
 import 'package:unote/screens/home/home_screen.dart';
 import 'package:unote/screens/widgets/user_icon.dart';
 import 'package:unote/utils/const.dart';
@@ -15,7 +16,11 @@ class NoteScreen extends StatelessWidget {
         backgroundColor: primaryColor.withOpacity(0.1),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(EditScreen(
+                data: data,
+              ));
+            },
             icon: const Icon(
               Icons.edit,
               color: primaryColor,
