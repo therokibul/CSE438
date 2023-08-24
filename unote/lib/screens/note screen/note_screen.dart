@@ -4,13 +4,16 @@ import 'package:unote/screens/edit%20screen/edit_screen.dart';
 import 'package:unote/screens/home/home_screen.dart';
 import 'package:unote/screens/widgets/user_icon.dart';
 import 'package:unote/utils/const.dart';
+import 'package:unote/utils/emal_check.dart';
 
 class NoteScreen extends StatelessWidget {
   const NoteScreen({super.key, required this.noteId, required this.data});
   final String noteId;
   final Map<String, dynamic> data;
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor.withOpacity(0.1),
@@ -96,9 +99,10 @@ class NoteScreen extends StatelessWidget {
                             'Collaborate with',
                             textScaleFactor: 2,
                           ),
-                          const Padding(
+                          Padding(
                             padding: EdgeInsets.symmetric(vertical: 30),
                             child: TextField(
+                              controller: emailController,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
                                 labelText: 'E-mail',
@@ -107,7 +111,11 @@ class NoteScreen extends StatelessWidget {
                             ),
                           ),
                           MaterialButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await checkEmailExists(
+                                  emailController.text.trim());
+                              Navigator.of(context).pop();
+                            },
                             color: primaryColor,
                             child: const Text(
                               'Save',
